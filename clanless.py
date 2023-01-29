@@ -49,8 +49,22 @@ for i in range(len(df_random)):
             print(response_json['warStars'], 'war stars')
             if response_json['townHallLevel'] >= 13:
                 print('Town hall', response_json['townHallLevel'])
+                try:
+                    print(response_json['heroes'][0]['name'], response_json['heroes'][0]['level'])
+                    print(response_json['heroes'][1]['name'], response_json['heroes'][1]['level'])
+                    print(response_json['heroes'][2]['name'], response_json['heroes'][2]['level'])
+                    print(response_json['heroes'][4]['name'], response_json['heroes'][4]['level'])
+                except:
+                    print(response_json['heroes'][3]['name'], response_json['heroes'][3]['level'])
             else:
                 print('Low level Town hall', response_json['townHallLevel'])
+            print(response_json['attackWins'], 'attack wins')
+            print(response_json['defenseWins'], 'defense wins')
+            print(response_json['bestTrophies'], 'best trophies')
+            try:
+                print(response_json['legendStatistics']['previousSeason']['trophies'], 'best trophies last season')
+            except:
+                pass
             if response_json['clanCapitalContributions'] == 0:
                 print('0 clan capital contributions')
             elif response_json['clanCapitalContributions'] < 100000:
