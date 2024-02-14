@@ -1,6 +1,6 @@
 # Clash Of Clans Legends League Dataset
 
-This repository contains the dataset of all legends league seasons scraped from the Clash of Clans API, starting from the very first season, 2015-07, to the latest season, [2023-11](#last-season-added-2023-11).\
+This repository contains the dataset of all legends league seasons scraped from the Clash of Clans API, starting from the very first season, 2015-07, to the latest season, [2023-12](#last-season-added-2023-12).\
 From the 2015 seasons to the 2018 seasons, the legends league season data are stored in CSV files.\
 From 2019 seasons and onward, the legends league season CSV data are compressed to ZIP files, so you will have to unzip these files to get access to the CSV files.
 
