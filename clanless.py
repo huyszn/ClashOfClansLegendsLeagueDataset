@@ -29,8 +29,8 @@ tag = ""
 #             print('Clan capital contributions:', response_json['clanCapitalContributions'])
 
 # Get random sample of n clanless players
-file = '2022-10.csv'
-n = 100
+file = '2024-03.csv'
+n = 1000
 df = pd.read_csv(file)
 df_random = df.sample(n=n)
 for i in range(len(df_random)):
@@ -44,10 +44,10 @@ for i in range(len(df_random)):
         try:
             name = response_json['name']
             #print("Not in a clan")
-            print(name)
-            print('#'+tag)
-            print(response_json['warStars'], 'war stars')
-            if response_json['townHallLevel'] >= 13:
+            if response_json['townHallLevel'] >= 15 and response_json['clanCapitalContributions'] != 0 and response_json['warStars'] > 1000 and response_json['bestTrophies'] > 5000:
+                print(name)
+                print('#'+tag)
+                print(response_json['warStars'], 'war stars')
                 print('Town hall', response_json['townHallLevel'])
                 try:
                     print(response_json['heroes'][0]['name'], response_json['heroes'][0]['level'])
@@ -56,22 +56,22 @@ for i in range(len(df_random)):
                     print(response_json['heroes'][4]['name'], response_json['heroes'][4]['level'])
                 except:
                     print(response_json['heroes'][3]['name'], response_json['heroes'][3]['level'])
-            else:
-                print('Low level Town hall', response_json['townHallLevel'])
-            print(response_json['attackWins'], 'attack wins')
-            print(response_json['defenseWins'], 'defense wins')
-            print(response_json['bestTrophies'], 'best trophies')
-            try:
-                print(response_json['legendStatistics']['previousSeason']['trophies'], 'best trophies last season')
-            except:
-                pass
-            if response_json['clanCapitalContributions'] == 0:
-                print('0 clan capital contributions')
-            elif response_json['clanCapitalContributions'] < 100000:
-                print('Bad clan capital contributions:', response_json['clanCapitalContributions'])
-            else:
-                print('Clan capital contributions:', response_json['clanCapitalContributions'])
-            print('\n')
+            #else:
+            #    print('Low level Town hall', response_json['townHallLevel'])
+                print(response_json['attackWins'], 'attack wins')
+                print(response_json['defenseWins'], 'defense wins')
+                print(response_json['bestTrophies'], 'best trophies')
+                try:
+                    print(response_json['legendStatistics']['previousSeason']['trophies'], 'best trophies last season')
+                except:
+                    pass
+                if response_json['clanCapitalContributions'] == 0:
+                    print('0 clan capital contributions')
+                elif response_json['clanCapitalContributions'] < 100000:
+                    print('Bad clan capital contributions:', response_json['clanCapitalContributions'])
+                else:
+                    print('Clan capital contributions:', response_json['clanCapitalContributions'])
+                print('\n')
         except KeyError:
             #print('Banned/Unknown')
             pass
