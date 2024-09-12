@@ -47,7 +47,9 @@ def scrape_legends_league_season(year, month):
         # Process the final dataframe
         rank = season_df.pop('rank')
         season_df.insert(0, rank.name, rank)
+        # fill missing ranks with empty rows
         season_df = season_df.set_index('rank').reindex(range(1, season_df['rank'].iloc[-1])).fillna(0).reset_index()
+        # change to int
         season_df['expLevel'] = season_df['expLevel'].astype(int)
         season_df['trophies'] = season_df['trophies'].astype(int)
         season_df['attackWins'] = season_df['attackWins'].astype(int)
